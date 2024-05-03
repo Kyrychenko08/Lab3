@@ -1,0 +1,3 @@
+@echo off
+start "Отчет" "C:\Users\kiric\OneDrive\Рабочий стол\Отчет"
+pause
