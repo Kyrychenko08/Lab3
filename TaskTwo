@@ -1,0 +1,28 @@
+@echo off
+chcp 65001
+setlocal enabledelayedexpansion
+
+set "directory=D:\Лабораторные\ПЗ-23-1\Кириченко_Алексей_Дмитриевич"
+set "subdirectory=Командная_строка"
+
+if not exist "%directory%" (
+    echo Каталог "%directory%" не знайдено.
+    exit /b 1
+)
+
+cd /d "%directory%"
+
+for /d %%d in (*) do (
+    set "attribs=%%~ad"
+    if "%%~nd"=="%subdirectory%" (
+        echo Підкаталог з іменем "%subdirectory%" знайдено: "%%~fd"
+        echo Атрибути: !attribs!
+        set found=true
+    )
+)
+
+if not defined found (
+    echo Підкаталог з іменем "%subdirectory%" не знайдено у каталозі "%directory%".
+    exit /b 1
+)
+exit /b 0
